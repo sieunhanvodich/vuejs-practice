@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../components/Login'
+import HomePage from '../components/HomePage'
 
 Vue.use(VueRouter)
 
@@ -12,7 +13,8 @@ export default new VueRouter({
             component: Login,
         },
         {
-            path: '/users'
+            path: '/users',
+            component: HomePage,
         },
         {
             path: 'users:id'
