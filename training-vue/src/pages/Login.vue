@@ -9,7 +9,7 @@
                 <v-toolbar-title>Login form</v-toolbar-title>
               </v-toolbar>
               <v-card-text>
-                <v-form @submit.prevent="handleLogin" ref="form" v-model="valid" lazy-validation>
+                <v-form @submit.prevent="handleLogin" ref="formLogin" v-model="valid" lazy-validation>
                   <v-text-field
                     v-model="username"
                     prepend-icon="mdi-account"
@@ -48,9 +48,10 @@ export default {
   data: () => ({
     username: "",
     password: "",
+    valid: true,
     usernameRules: [
       v => !!v || "Username required",
-      v => v === "htdat1" || "Wrong username"
+      v => v === "tabac" || "Wrong username"
     ],
     passwordRules: [
       v => !!v || "Password required",
@@ -61,7 +62,7 @@ export default {
 
   methods: {
     handleLogin() {
-      if (this.username === "htdat1" && this.password === "123456") {
+      if (this.username === "tabac" && this.password === "123456") {
         this.isLogin = true;
         this.$router.push("/users");
       } else {
@@ -69,6 +70,14 @@ export default {
       }
       // this.$refs.form.validate();
       // console.log(this.$router.history.current.path);
+    },
+
+    validate() {
+      this.$refs.formLogin.validate()
+    },
+
+    reset() {
+      this.$refs.formLogin.reset()
     }
   }
 };

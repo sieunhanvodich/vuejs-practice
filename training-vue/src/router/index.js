@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../components/Login'
-import HomePage from '../components/HomePage'
+import Login from '../pages/Login'
+import Users from '../pages/Users/Users'
+import UserDetail from '../pages/Users/UserDetail'
+import Posts from '../pages/Posts/Posts'
+import PostDetail from '../pages/Posts/PostDetail'
 
 Vue.use(VueRouter)
 
@@ -14,16 +17,21 @@ export default new VueRouter({
         },
         {
             path: '/users',
-            component: HomePage,
+            component: Users,
         },
         {
-            path: 'users:id'
+            path: '/users/:id',
+            component: UserDetail,
+            name: 'userDetail'
         },
         {
-            path: 'posts'
+            path: '/posts',
+            component: Posts,
         },
         {
-            path: 'posts/:id'
+            path: '/posts/:id',
+            component: PostDetail,
+            name: 'postDetail'
         }
     ]
 })
