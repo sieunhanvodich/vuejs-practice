@@ -1,7 +1,8 @@
-import { createApp } from 'vue';
+import Vue, { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import axios from 'axios';
 
 import {
     ElButton,
@@ -15,6 +16,8 @@ import {
     ElRow,
     ElCol,
     ElMenu,
+    ElTabs,
+    ElTabPane,
 } from 'element-plus';
 import 'element-plus/lib/theme-chalk/index.css';
 
@@ -29,7 +32,20 @@ const components = [
     ElInput,
     ElRow,
     ElCol,
+    ElMenu,
+    ElTabs,
+    ElTabPane,
 ];
+
+export default function createHttp(secured = true) {
+    if (secured) {
+        return axios.create({
+            headers: { Authorization: `bearer ${store.state.token}` },
+        });
+    } else {
+        axios.create();
+    }
+}
 
 const app = createApp(App);
 
