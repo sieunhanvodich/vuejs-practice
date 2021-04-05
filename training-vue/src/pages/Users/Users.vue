@@ -53,7 +53,8 @@
                         {{ user.email }}
                       </v-list-item-subtitle>
                     </v-list-item-content>
-                    <v-btn rounded small @click="getUserDetail(user.id)">Detail</v-btn>
+                    <!-- <v-btn rounded small @click="getUserDetail(user.id)">Detail</v-btn> -->
+                    <v-btn rounded small :to="{name: 'userDetail', params: { id: user.id }}">Detail</v-btn>
                   </v-list-item>
                 </template>
               </v-list>

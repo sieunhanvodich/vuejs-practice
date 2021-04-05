@@ -15,8 +15,8 @@ const mutations = {
 }
 
 const actions = {
-    getPostsList({commit}) {
-        return axios
+    async getPostsList({commit}) {
+        return await axios
             .get('http://jsonplaceholder.typicode.com/posts')
             .then(response => {
                 commit('POSTS_LIST', response.data)
@@ -28,11 +28,11 @@ const actions = {
 
     },
 
-    getPostDetail({commit}, id) {
-        return axios
-            .get('http://jsonplaceholder.typicode.com/posts?id=', id)
+    async getPostDetail({commit}, id) {
+        return await axios
+            .get(`http://jsonplaceholder.typicode.com/posts/${id}`)
             .then(response => {
-                commit('POSTS_LIST', response.data)
+                commit('POST', response.data)
                 console.log('res', response.data)
             })
             .catch(error => {
