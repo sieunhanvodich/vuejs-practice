@@ -2,19 +2,16 @@
     <v-app>
         <v-main>
             <v-container class="py-8 px-6" fluid>
-                <h3>Post {{}}</h3>
+                <h3>Post {{ $route.params.id }}</h3>
                 <br />           
-                <v-row>
-                    <v-col cols="12">
-                        <v-card>
-                            <v-text-field
-                                v-model="first"
-                                label="First Name"
-                                filled
-                            ></v-text-field>
-                        </v-card>
-                    </v-col>
-                </v-row>
+                <form>
+                  <v-text-field label="Title" required v-model="post.title"
+                    >Title</v-text-field
+                  >
+                  <v-text-field label="Username" required v-model="post.body"
+                    >Body</v-text-field
+                  >
+                </form>
             </v-container>
         </v-main>
     </v-app>
@@ -24,11 +21,12 @@
 import { mapState } from "vuex";
 
 export default {
-  name: "Post Detail",
+  name: "PostDetail",
   props: {
       dataDetail: Object
   },
   data: () => ({
+    id: this.$route.params.id,
     drawer: null,
     links: [
       ["mdi-account-group", "Users", "/users"],
@@ -38,7 +36,7 @@ export default {
 
   computed: {
     ...mapState({
-      postsList: state => state.posts.postsList
+      post: state => state.posts.post
     })
   },
 

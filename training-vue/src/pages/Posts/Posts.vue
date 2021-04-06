@@ -52,7 +52,8 @@
                         {{ post.body }}
                       </v-list-item-subtitle>
                     </v-list-item-content>
-                    <v-btn rounded small @click="getPostDetail(post.id)">Detail</v-btn>
+                    <!-- <v-btn rounded small @click="getPostDetail(post.id)">Detail</v-btn> -->
+                    <v-btn rounded small :to="{name: 'postDetail', params: { id: post.id }}">Detail</v-btn>
                   </v-list-item>
                 </template>
               </v-list>
