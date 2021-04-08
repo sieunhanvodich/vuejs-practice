@@ -1,26 +1,29 @@
 <template>
     <v-app>
-        <v-main>
-            <v-container class="py-8 px-6" fluid>
-                <h3>Post {{ $route.params.id }}</h3>
-                <br />           
-                <form>
-                  <v-text-field label="Title" required v-model="post.title"
-                    >Title</v-text-field
-                  >
-                  <v-text-field label="Username" required v-model="post.body"
-                    >Body</v-text-field
-                  >
-                </form>
-            </v-container>
-        </v-main>
+      <SidesBar />
+      <v-main>
+          <v-container class="py-8 px-6" fluid>
+              <h3>Post {{ $route.params.id }}</h3>
+              <br />           
+              <form>
+                <v-text-field label="Title" required v-model="post.title"
+                  >Title</v-text-field
+                >
+                <v-text-field label="Username" required v-model="post.body"
+                  >Body</v-text-field
+                >
+              </form>
+          </v-container>
+      </v-main>
     </v-app>
 </template>
 
 <script>
 import { mapState } from "vuex";
+import SidesBar from "../SidesBar.vue";
 
 export default {
+  components: { SidesBar },
   name: "PostDetail",
   props: {
       dataDetail: Object

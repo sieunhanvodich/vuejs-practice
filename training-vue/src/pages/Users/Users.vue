@@ -1,30 +1,7 @@
 <template>
-  <v-app id="inspire">
+  <v-app>
 
-    <v-navigation-drawer v-model="drawer" app>
-      <v-sheet color="grey lighten-4" class="pa-4">
-        <v-avatar class="mb-4" color="grey darken-1" size="64">
-          <img src="../../assets/logo-arsenal-3.png" alt="logo-ars" />
-        </v-avatar>
-
-        <div>tabac</div>
-      </v-sheet>
-
-      <v-divider></v-divider>
-
-      <v-list>
-        <v-list-item v-for="[icon, text, path] in links" :key="icon" link>
-          <v-list-item-icon>
-            <v-icon>{{ icon }}</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title v-text="text" @click="router(path)"></v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-
+    <SidesBar />
     <v-main>
       <v-container class="py-8 px-6" fluid>
         <h3>User List</h3>
@@ -69,14 +46,14 @@
 <script>
 import { mapState } from "vuex";
 
+import SidesBar from "../SidesBar.vue";
+
 export default {
+  components: { SidesBar },
   name: "Users",
-  data: () => ({
-    drawer: null,
-    links: [
-      ["mdi-account-group", "Users", "/users"],
-      ["mdi-post", "Posts", "/posts"],
-    ]
+  data: 
+    () => ({
+    
   }),
 
   computed: {
@@ -90,9 +67,6 @@ export default {
   },
 
   methods: {
-    router(path){
-        this.$router.push(path)
-    },
     getUserDetail(key) {
       this.$router.push({
         path: '/users',
