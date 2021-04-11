@@ -1,6 +1,5 @@
 <template>
-  <v-app>
-
+  <v-app >
     <SidesBar />
     <v-main>
       <v-container class="py-8 px-6" fluid>
@@ -12,6 +11,8 @@
           clearable
           hide-details=""
           append-icon="mdi-account-search"
+          @click:append="findUserById"
+          @keyup.enter="findUserById"
         ></v-text-field>
 
         <v-row>
@@ -72,6 +73,10 @@ export default {
         path: '/users',
         query: {id : key}
       })
+    },
+
+    findUserById(e) {
+      this.$store.dispatch('users/getUserDetail', e.target.value)
     }
   },
 };

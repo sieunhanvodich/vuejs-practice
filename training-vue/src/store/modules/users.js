@@ -19,7 +19,10 @@ const mutations = {
         })
     },
     UPDATE_USER(state, userUpdate) {
-        state.userUpdate = userUpdate
+        const index = state.usersList.findIndex(user => user.id === userUpdate.id);
+            if (index !== -1) {
+                state.usersList.splice(index, userUpdate);
+            }
     }
 }
 
@@ -56,8 +59,8 @@ const actions = {
            
     },
 
-    async updateUser({commit}, id) {
-        await axios.put(`http://jsonplaceholder.typicode.com/users/${id}`, id)
+    async updateUser({commit}, updatedUser) {
+        await axios.put(`http://jsonplaceholder.typicode.com/users/${updatedUser.id}`, updatedUser)
             .then(res => {
                 commit('UPDATE_USER', res.data)
             })

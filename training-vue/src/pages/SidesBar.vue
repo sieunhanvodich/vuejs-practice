@@ -1,6 +1,5 @@
 <template>
-    <v-app>
-        <v-navigation-drawer v-model="drawer" app>
+    <v-navigation-drawer v-model="drawer" app>
         <v-sheet color="grey lighten-4" class="pa-4">
             <v-avatar class="mb-4" color="grey darken-1" size="64">
             <img src="../assets/logo-arsenal-3.png" alt="logo-ars" />
@@ -22,8 +21,7 @@
             </v-list-item-content>
             </v-list-item>
         </v-list>
-        </v-navigation-drawer>
-    </v-app>
+    </v-navigation-drawer>
 </template>
 
 <script>

@@ -12,6 +12,8 @@
           clearable
           hide-details=""
           append-icon="mdi-file-find"
+          @click:append="findPostById"
+          @keyup.enter="findPostById"
         ></v-text-field>
 
         <v-row>
@@ -71,6 +73,10 @@ export default {
         path: '/posts',
         query: {id : key}
       })
+    },
+
+     findPostById(e) {
+      this.$store.dispatch('posts/getPostDetail', e.target.value)
     }
   },
 };
